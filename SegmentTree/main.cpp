@@ -93,8 +93,7 @@ int main() {
 
   uint64_t res = 0;
   for (uint64_t i = 0; i < n; i++) {
-    uint64_t sum = GetSum(0, 0, n, 0, permutations[i] - 1) % kMod;
-    res += ((factorials[i] % kMod) * sum) % kMod;
+    res = (res + factorials[i] * GetSum(0, 0, n, 0, permutations[i] - 1)) % kMod;
     Change(0, 0, n, permutations[i] - 1, 0);
   }
   std::cout << ++res;
